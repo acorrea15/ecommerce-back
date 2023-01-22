@@ -100,7 +100,7 @@ router.post('/add-to-cart', async(req, res)=> {
       userCart[productId] = cant; //1;
     }
     userCart.count += cant; //1;
-    userCart.total = Number(userCart.total) + Number(price);
+    userCart.total = Number(userCart.total) + Number(cant)*Number(price);
     user.cart = userCart;
     user.markModified('cart');
     await user.save();
