@@ -65,4 +65,4 @@ router.post('/:id/updateNotifications', async(req, res)=> {
   }
 })
 
-module.exports = router;
+module.exports = router; 
