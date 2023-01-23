@@ -5,6 +5,8 @@ const http = require('http');
 require('dotenv').config();
 const stripe = require('stripe')(process.env.STRIPE_SECRET);
 require('./connection')
+const sendEmail = require("./utils/sendEmail");
+
 const server = http.createServer(app);
 const {Server} = require('socket.io');
 const io = new Server(server, {
@@ -46,6 +48,27 @@ app.post('/create-payment', async(req, res)=> {
    }
 })
 
+
+app.post("/api/sendemail", async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const send_to = email;
+    const sent_from = process.env.EMAIL_USER;
+    const reply_to = email;
+    const subject = "Bienvenido a ECommerce5i";
+    const message = `
+        <h3>Hola!</h3>
+        <p>Gracias por registrarse</p>
+        <p>Saludos!...</p>
+    `;
+
+    await sendEmail(subject, message, send_to, sent_from, reply_to);
+    res.status(200).json({ success: true, message: "Email Sent" });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+});
 
 server.listen(8080, ()=> {
   console.log('Servidor corriendo en el puerto', 8080)
