@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/User');
-const Order = require('../models/Order');
+//const Order = require('../models/Order');
 // signup
 
 router.post('/signup', async(req, res)=> {
@@ -62,6 +62,20 @@ router.post('/:id/updateNotifications', async(req, res)=> {
     res.status(200).send();
   } catch (e) {
     res.status(400).send(e.message)
+  }
+})
+
+
+//shipping order
+
+router.patch('/:id/mark-disabled', async(req, res)=> {
+  const {id} = req.params;
+  try {
+    const user    = await User.findByIdAndUpdate(id, {isEnabled: false});
+    const users = await User.findById(id);
+    res.status(200).json(users)
+  } catch (e) {
+    res.status(400).json(e.message);
   }
 })
 
