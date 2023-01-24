@@ -65,4 +65,18 @@ router.post('/:id/updateNotifications', async(req, res)=> {
   }
 })
 
+
+//Disabled users
+router.patch('/:id/mark-disabled', async(req, res)=> {
+  const {id} = req.params;
+  try {
+    const user    = await User.findByIdAndUpdate(id, {isEnabled: false});
+    const users = await User.findById(id);
+    res.status(200).json(users)
+  } catch (e) {
+    res.status(400).json(e.message);
+  }
+})
+
+
 module.exports = router;
