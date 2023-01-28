@@ -21,6 +21,8 @@ router.post('/login', async(req, res) => {
   const {email, password} = req.body;
   try {
     const user = await User.findByCredentials(email, password);
+    console.log(user,user.isEnabled, "<<<---user")
+    if(!user.isEnabled) return res.status(400).send('Usuario no habilitado!');
     res.json(user)
   } catch (e) {
     res.status(400).send(e.message)
