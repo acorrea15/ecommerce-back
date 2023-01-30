@@ -21,6 +21,8 @@ router.post('/login', async(req, res) => {
   const {email, password} = req.body;
   try {
     const user = await User.findByCredentials(email, password);
+    console.log(user,user.isEnabled, "<<<---user")
+    if(!user.isEnabled) return res.status(400).send('Usuario no habilitado!');
     res.json(user)
   } catch (e) {
     res.status(400).send(e.message)
@@ -64,5 +66,19 @@ router.post('/:id/updateNotifications', async(req, res)=> {
     res.status(400).send(e.message)
   }
 })
+
+
+//Disabled users
+router.patch('/:id/mark-disabled', async(req, res)=> {
+  const {id} = req.params;
+  try {
+    const user    = await User.findByIdAndUpdate(id, {isEnabled: false});
+    const users = await User.findById(id);
+    res.status(200).json(users)
+  } catch (e) {
+    res.status(400).json(e.message);
+  }
+})
+
 
 module.exports = router;

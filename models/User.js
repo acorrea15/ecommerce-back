@@ -31,6 +31,11 @@ const UserSchema = mongoose.Schema({
     default: false
   },
 
+  isEnabled: {
+    type: Boolean,
+    default: true
+  },
+
   cart: {
     type: Object,
     default: {
