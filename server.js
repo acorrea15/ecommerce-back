@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const http = require('http');
+const http = require('http'); 
 require('dotenv').config();
 const bcrypt = require("bcryptjs");
 const stripe = require('stripe')(process.env.STRIPE_SECRET);

@@ -41,7 +41,7 @@ router.get('/', async(req, res)=> {
 
 //shipping order
 
-router.patch('/:id/mark-shipped', async(req, res)=> {
+router.patch('/:id/mark-shipped', async(req, res)=> { 
   const io = req.app.get('socketio');
   const {ownerId} = req.body;
   const {id} = req.params;
@@ -50,7 +50,7 @@ router.patch('/:id/mark-shipped', async(req, res)=> {
     await Order.findByIdAndUpdate(id, {status: 'enviado'});
     const orders = await Order.find().populate('owner', ['email', 'name']);
     const notification = {status: 'unread', message: `Pedido ${id} enviado con éxito`, time: new Date()};
-    io.sockets.emit("notification", notification, ownerId);
+    io.sockets.emit("notification", notification, ownerId); 
     user.notifications.push(notification);
     await user.save();
     res.status(200).json(orders)
