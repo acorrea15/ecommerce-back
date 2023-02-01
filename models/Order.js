@@ -10,7 +10,7 @@ const OrderSchema = mongoose.Schema({
   },
   status: {
     type: String,
-    default: 'processing'
+    default: 'procesando'
   },
   total : {
     type: Number,

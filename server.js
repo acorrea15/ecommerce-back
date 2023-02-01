@@ -150,7 +150,7 @@ app.get("/reset-password/:id/:token", async (req, res) => {
   const oldUser = await User.findOne({ _id: id });
   console.log(oldUser,  id, "<<<----  oldUser,  id ")
   if (!oldUser) {
-    return res.json({ status: "User Not Exists!!" });
+    return res.json({ status: "¡Usuario inexistente!. Verifique el email ingresado." });
   }
 
   console.log(JWT_SECRET, oldUser.password, "JWT_SECRET , oldUser.password")
@@ -161,11 +161,11 @@ app.get("/reset-password/:id/:token", async (req, res) => {
     console.log("Antes de verify = jwt.verify(token, secret)")
     const verify = jwt.verify(token, secret);
     console.log("Después de verify = jwt.verify(token, secret)")
-    res.render("index", { email: verify.email, status: "Not Verified" });
+    res.render("index", { email: verify.email, status: "¡No verificado!" });
     console.log("render(...........")
   } catch (error) {
     console.log(error);
-    res.send("Not Verified");
+    res.send("¡No verificado!");
   }
 });
 
@@ -178,7 +178,7 @@ app.post("/reset-password/:id/:token", async (req, res) => {
   console.log(oldUser, "<<<<---- oldUser  app.post(/reset-password/:id/:token");
 
   if (!oldUser) {
-    return res.json({ status: "User Not Exists!!" });
+    return res.json({ status: "¡Usuario inexistente!. Verifique el email ingresado." });
   }
 
   console.log( "antes de secret");

@@ -75,7 +75,7 @@ router.get('/category/:category', async(req,res)=> {
   try {
     let products;
     const sort = {'_id': -1}
-    if(category == "all"){
+    if(category == "todos"){
       products = await Product.find().sort(sort);
     } else {
       products = await Product.find({category}).sort(sort)
