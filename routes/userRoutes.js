@@ -10,7 +10,7 @@ router.post('/signup', async(req, res)=> {
     const user = await User.create({name, email, password}); 
     res.json(user);
   } catch (e) {
-    if(e.code === 11000) return res.status(400).send('Email already exists');
+    if(e.code === 11000) return res.status(400).send('El email ya existe! Utilice otro.');
     res.status(400).send(e.message)
   }
 })
