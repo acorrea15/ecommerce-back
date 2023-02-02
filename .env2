@@ -1,0 +1,14 @@
+MONGODB_URI=mongodb+srv://adolcor:Peron2531@cluster0.nngzipz.mongodb.net/?retryWrites=true&w=majority
+CLOUD_NAME=devuepcra
+CLOUD_API_KEY=567694439882644
+CLOUD_API_SECRET=VWsQ8dDku3gPzyVUpvETkULF8HM
+STRIPE_SECRET=sk_test_51MSSBeIaEt1137RZ9WFyzxjOZDjVNsTfDyi4tQryudPapXp3GkUhmjJLcoATrUZcm7ZW74uorXdlzP0qFmjo0KNx00l8FbHOQH
+
+
+EMAIL_HOST=smtp-mail.outlook.com
+EMAIL_USER=ecommerce5i@outlook.com
+EMAIL_PASS=Rolling123**
+
+JWT_SECRET = hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe
+
+# El entorno de la nube debe proporcionarme estos valores
