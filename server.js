@@ -235,6 +235,7 @@ const verifyToken = (req, res, next) => {
 app.post("/login", (req, res)=>{
   const usuario = req.body.usuario;
   const clave = req.body.clave;
+  console.log("ingresó al app.post")
   if(usuario=='fmendoza' && clave=='123456'){
       const datos = {
           id: "123",
@@ -260,6 +261,8 @@ app.get("/login/:id/token",verifyToken, (req, res)=>{
       {id:2,cliente:"Empresa B",total:2100,fecha:"2022-01-18"},
       {id:3,cliente:"Empresa c",total:200,fecha:"2022-01-23"},
   ];
+
+  console.log("ingresó a app.get")
   res.json(datos);
 });
 
