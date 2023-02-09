@@ -254,6 +254,21 @@ app.post("/login", (req, res)=>{
   }
 });
 
+app.get("/usuario/:id/ventas",verifyToken (req, res)=>{
+  const datos = [
+      {id:1,cliente:"Empresa A",total:2500,fecha:"2022-01-15"},
+      {id:2,cliente:"Empresa B",total:2100,fecha:"2022-01-18"},
+      {id:3,cliente:"Empresa c",total:200,fecha:"2022-01-23"},
+  ];
+  res.json(datos);
+});
+
+app.listen(3001, ()=>{
+  console.log("Servidor iniciado en el puerto 3001");
+});
+
+
+
 
 
 
