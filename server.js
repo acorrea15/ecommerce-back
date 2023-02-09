@@ -266,9 +266,7 @@ app.get("/login/:id/token",verifyToken, (req, res)=>{
   res.json(datos);
 });
 
-app.listen(3001, ()=>{
-  console.log("Servidor iniciado en el puerto 3001");
-});
+
 
 
 
