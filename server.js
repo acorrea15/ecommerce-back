@@ -216,6 +216,48 @@ app.post("/reset-password/:id/:token", async (req, res) => {
   }
 });
 
+const TOKEN_KEY = "x4TvnErxRETbVcqaLl5dqMI115eNlp5y";
+
+const verifyToken = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    console.log(authHeader);
+    if(token==null)
+        return res.status(401).send("Token requerido");
+    jwt.verify(token, TOKEN_KEY, (err, user)=>{
+        if(err) return res.status(403).send("Token invalido");
+        console.log(user);
+        req.user = user;
+        next();
+    });
+}
+
+app.post("/login", (req, res)=>{
+  const usuario = req.body.usuario;
+  const clave = req.body.clave;
+  if(usuario=='fmendoza' && clave=='123456'){
+      const datos = {
+          id: "123",
+          nombre: "Felipe Mendoza",
+          email: "fmendoza@mail.com",
+          codigo: "ABDE456-LK"
+      };
+      const token = jwt.sign(
+          {userId:datos.id, emmail:datos.email},
+          TOKEN_KEY,
+          {expiresIn: "2h"}
+      );
+      let nDatos = {...datos, token};
+      res.status(200).json(nDatos);
+  }else{
+      res.status(400).send("Crendenciales incorrectas");
+  }
+});
+
+
+
+
+
 const PORT = process.env.PORT || 8080;
 
 server.listen(PORT, ()=> {
