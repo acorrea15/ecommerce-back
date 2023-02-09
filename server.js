@@ -254,7 +254,7 @@ app.post("/login", (req, res)=>{
   }
 });
 
-app.get("/login/:id/token",verifyToken (req, res)=>{
+app.get("/login/:id/token",verifyToken, (req, res)=>{
   const datos = [
       {id:1,cliente:"Empresa A",total:2500,fecha:"2022-01-15"},
       {id:2,cliente:"Empresa B",total:2100,fecha:"2022-01-18"},
