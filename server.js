@@ -88,7 +88,9 @@ app.post("/forgot-password", async (req, res) => {
     const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, {
       expiresIn: "2m",
     });
-    const link = `http://localhost:8080/reset-password/${oldUser._id}/${token}`;
+       const link = `http://localhost:8080/reset-password/${oldUser._id}/${token}`;  
+    /* const link = `https://ecommerce-back-production.up.railway.app/${oldUser._id}/${token}`; */
+    
     console.log(link, "<<<<<----LINK /forgot-password ");
 
 
