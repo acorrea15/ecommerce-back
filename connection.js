@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-// Esta es la conexión a la base de datos de mongoose
+// Esta es la conexión a la base de datos de mongoose: está con el then y el cath como indica el turorial
 const mongoose = require('mongoose');
 
 const connectionStr = process.env.MONGODB_URI;
