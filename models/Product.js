@@ -1,3 +1,6 @@
+// Esquuemas de productos:
+// Primero llamamos a mongoose y después definimos esquema:
+
 const mongoose = require('mongoose');
 const ProductSchema = mongoose.Schema({
   name: {

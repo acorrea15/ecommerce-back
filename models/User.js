@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+// Esquema de los productos: 
+
 const UserSchema = mongoose.Schema({
 
   name: {
@@ -96,6 +98,7 @@ UserSchema.pre('remove', function(next){
   this.model('Order').remove({owner: this._id}, next);
 })
 
+// Exportación del esquema a partir de la constante User
 
 const User = mongoose.model('User', UserSchema);
 
