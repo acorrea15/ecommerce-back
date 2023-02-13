@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const User = require('../models/User');
 const Order = require('../models/Order');
-// signup
+
+
+// signup: conexión con la base de datos para el signup: método post 
 
 router.post('/signup', async(req, res)=> {
   const {name, email, password} = req.body;
@@ -15,7 +17,7 @@ router.post('/signup', async(req, res)=> {
   }
 })
 
-// login
+// login: conexión con la base de datos para el login: post
 
 router.post('/login', async(req, res) => {
   const {email, password} = req.body;
