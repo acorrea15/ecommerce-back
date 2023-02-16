@@ -20,7 +20,7 @@ const verifyToken = (req, res, next) => {
   });
 }
 
-// signup
+// signup 
 router.post('/signup', async(req, res)=> {
   const {name, email, password} = req.body;
 
