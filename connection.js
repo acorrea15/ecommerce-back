@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const connectionStr = process.env.MONGODB_URI;
 
 
-mongoose.connect(connectionStr, {useNewUrlparser: true})
+mongoose.connect("mongodb+srv://adolcor:Peron2531@cluster0.nngzipz.mongodb.net/?retryWrites=true&w=majority", {useNewUrlparser: true})
 .then(() => console.log('connected to mongodb'))
 .catch(err => console.log(err))
 
