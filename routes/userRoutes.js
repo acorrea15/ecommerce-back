@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/User');
 const Order = require('../models/Order');
-// signup
+ 
 
 router.post('/signup', async(req, res)=> {
   const {name, email, password} = req.body;
@@ -15,13 +15,13 @@ router.post('/signup', async(req, res)=> {
   }
 })
 
-// login
+ 
 
 router.post('/login', async(req, res) => {
   const {email, password} = req.body;
   try {
     const user = await User.findByCredentials(email, password);
-    console.log(user,user.isEnabled, "<<<---user")
+     
     if(!user.isEnabled) return res.status(400).send('Usuario no habilitado!');
     res.json(user)
   } catch (e) {
@@ -29,7 +29,7 @@ router.post('/login', async(req, res) => {
   }
 })
 
-// get users;
+ 
 
 router.get('/', async(req, res)=> {
   try {
@@ -40,7 +40,7 @@ router.get('/', async(req, res)=> {
   }
 })
 
-// get user orders
+ 
 
 router.get('/:id/orders', async (req, res)=> {
   const {id} = req.params;
@@ -51,7 +51,7 @@ router.get('/:id/orders', async (req, res)=> {
     res.status(400).send(e.message);
   }
 })
-// update user notifcations
+ 
 router.post('/:id/updateNotifications', async(req, res)=> {
   const {id} = req.params;
   try {
@@ -68,7 +68,7 @@ router.post('/:id/updateNotifications', async(req, res)=> {
 })
 
 
-//Disabled users
+ 
 router.patch('/:id/mark-disabled', async(req, res)=> {
   const {id} = req.params;
   try {

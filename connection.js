@@ -7,8 +7,8 @@ const connectionStr = process.env.MONGODB_URI;
 
 mongoose.connect(connectionStr, {useNewUrlparser: true})
 .then(() => console.log('connected to mongodb'))
-.catch(err => console.log(err))
+.catch(err => console.error(err))
 
 mongoose.connection.on('error', err => {
-  console.log(err)
+  console.error(err)
 })

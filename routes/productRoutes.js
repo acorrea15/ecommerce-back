@@ -2,7 +2,7 @@ const router = require('express').Router();
 const Product = require('../models/Product');
 const User = require('../models/User');
 
-//get products;
+ 
 router.get('/', async(req, res)=> {
   try {
     const sort = {'_id': -1}
@@ -14,7 +14,7 @@ router.get('/', async(req, res)=> {
 })
 
 
-//create product
+ 
 router.post('/', async(req, res)=> {
   try {
     const {name, description, price, category, images: pictures} = req.body;
@@ -27,7 +27,7 @@ router.post('/', async(req, res)=> {
 })
 
 
-// update product
+ 
 
 router.patch('/:id', async(req, res)=> {
   const {id} = req.params;
@@ -42,7 +42,7 @@ router.patch('/:id', async(req, res)=> {
 })
 
 
-// delete product
+ 
 
 router.delete('/:id', async(req, res)=> {
   const {id} = req.params;
@@ -86,7 +86,7 @@ router.get('/category/:category', async(req,res)=> {
   }
 })
 
-// cart routes
+ 
 
 router.post('/add-to-cart', async(req, res)=> {
   const {userId, productId, price, cant} = req.body;
@@ -95,11 +95,11 @@ router.post('/add-to-cart', async(req, res)=> {
     const user = await User.findById(userId);
     const userCart = user.cart;
     if(user.cart[productId]){
-      userCart[productId] += cant;//1;
+      userCart[productId] += cant; ;
     } else {
-      userCart[productId] = cant; //1;
+      userCart[productId] = cant;  ;
     }
-    userCart.count += cant; //1;
+    userCart.count += cant;  ;
     userCart.total = Number(userCart.total) + Number(cant)*Number(price);
     user.cart = userCart;
     user.markModified('cart');

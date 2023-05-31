@@ -3,7 +3,6 @@ const Order = require('../models/Order');
 const User = require('../models/User');
 
 
-//creating an order
 
 router.post('/', async(req, res)=> {
   const io = req.app.get('socketio');
@@ -28,7 +27,7 @@ router.post('/', async(req, res)=> {
 })
 
 
-// getting all orders;
+ 
 router.get('/', async(req, res)=> {
   try {
     const orders = await Order.find().populate('owner', ['email', 'name']);
@@ -39,7 +38,7 @@ router.get('/', async(req, res)=> {
 })
 
 
-//shipping order
+ 
 
 router.patch('/:id/mark-shipped', async(req, res)=> {
   const io = req.app.get('socketio');
